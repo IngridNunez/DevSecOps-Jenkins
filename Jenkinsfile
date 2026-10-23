@@ -11,15 +11,12 @@ pipeline {
             }
         }
         stage('Seguridad') {
-
-          steps {
-        
-            sh 'bandit -ll app.py'#auditor de seguridad basica 
-        
-            sh 'pip-audit -r requirements.txt'#para evitar subir una app con elementos vulnerables dentro de una librería
-        
-          }
-        
+            steps {
+                // Auditor de seguridad basico sobre el codigo propio
+                sh 'bandit -ll app.py'
+                // Evita subir una app con dependencias con vulnerabilidades conocidas
+                sh 'pip-audit -r requirements.txt'
+            }
         }
 
         stage('Test') {
