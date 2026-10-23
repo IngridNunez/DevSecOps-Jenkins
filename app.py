@@ -18,7 +18,7 @@ def get_db():
 
 @app.route("/health")
 def health():
-    return jsonify(status="ok")
+    return jsonify(status="OK")
 
 
 @app.route("/user")
