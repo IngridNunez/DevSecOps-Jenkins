@@ -10,6 +10,17 @@ pipeline {
                 '''
             }
         }
+        stage('Seguridad') {
+
+          steps {
+        
+            sh 'bandit -ll app.py'#auditor de seguridad basica 
+        
+            sh 'pip-audit -r requirements.txt'#para evitar subir una app con elementos vulnerables dentro de una librería
+        
+          }
+        
+        }
 
         stage('Test') {
             steps {
